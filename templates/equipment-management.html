@@ -1,0 +1,50 @@
+<ol class="breadcrumb">
+  <li><a href="admin/">Admin Panel</a></li>
+  <li><a href="#">Manage Users</a></li>
+  <li class="active">Tables</li>
+</ol>
+<h1>Manage Users</h1>
+
+<div class="row margin-bottom-30">
+  <div class="col-md-12">
+    <ul id="action" class="nav nav-pills">
+      <li class="active"><a href="#" id="createEquip">Equipment Data<span class="badge"></span></a></li>
+      <li><a href="#" id="searchEquip">Search Equipment<span class="badge"></span></a></li>
+      <li><a href="#" id="showAllEquip">List All Equipment<span class="badge"></span></a></li>
+    </ul>          
+  </div>
+</div> 
+<div class="row">
+  <div class="col-md-12">
+
+    <div class="btn-group pull-right" id="templatemo_sort_btn">
+    </div>
+
+    <div id="UserFunction">
+    </div>
+
+    <script type="text/javascript">
+
+    $('#action li').click(function(){
+        $('#action').find('.active').removeClass('active');
+        $(this).addClass('active');
+
+        $.ajax({
+              type: "GET",
+              url: $(this).children('a').attr('id'), 
+
+              success: function(data, textStatus, jqXHR) {
+                $('#UserFunction').html(data);
+              },
+              error: function(xhr, textStatus, errorThrown) {
+                alert("Error occurred");
+              }
+        });
+    });
+
+    $('#createEquip').click();
+
+    </script>
+
+  </div>
+</div>

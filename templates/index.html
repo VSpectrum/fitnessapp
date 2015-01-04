@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<head>
+  {% load staticfiles %}
+  <meta charset="utf-8">
+  <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"><![endif]-->
+  <title>Fitness Center Moderator</title>  
+  <link rel="stylesheet" href="{% static 'css/templatemo_main.css' %}">
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+  <script src="{% static 'js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'js/Chart.min.js' %}"></script>
+</head>
+<body>
+  <div class="navbar navbar-inverse" role="navigation">
+      <div class="navbar-header">
+        <div class="logo"><h1>Dashboard</h1></div>
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+          <span class="sr-only">Toggle navigation</span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button> 
+      </div>   
+    </div>
+    <div class="template-page-wrapper">
+      <div class="navbar-collapse collapse templatemo-sidebar">
+        <ul id="sidebar" class="templatemo-sidebar-menu">
+          
+          <li class="active"><a href="#" id="dashboard"><i class="fa fa-home"></i>Dashboard</a></li>
+          <li><a href="#" id="dataVisualization"><i class="fa fa-cubes"></i>
+            <span class="badge pull-right"></span>Data Visualization</a></li>
+          <li><a href="#" id="manageUsers"><i class="fa fa-users"></i><span class="badge pull-right"></span>Manage Users</a></li>
+          <li><a href="#" id="manageEquipment"><i class="fa fa-cog"></i>Equipment</a></li>
+        </ul>
+      </div><!--/.navbar-collapse -->
+
+      <div class="templatemo-content-wrapper">
+        <div class="templatemo-content">
+        </div>
+      </div>
+
+      <!-- Modal -->
+      <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+              <h4 class="modal-title" id="myModalLabel">Are you sure you want to sign out?</h4>
+            </div>
+            <div class="modal-footer">
+              <a href="sign-in.html" class="btn btn-primary">Yes</a>
+              <button type="button" class="btn btn-default" data-dismiss="modal">No</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <footer class="templatemo-footer">
+        <div class="templatemo-copyright">
+          <p>Fitness Center</p>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript">
+
+    window.onload = function(){
+      $('#dashboard').click();
+    };
+
+    $('#myTab a').click(function (e) {
+      e.preventDefault();
+      $(this).tab('show');
+    });
+
+    $('#loading-example-btn').click(function () {
+      var btn = $(this);
+      btn.button('loading');
+    });
+
+    $('#sidebar li').click(function(){
+      $('#sidebar').find('.active').removeClass('active');
+      $(this).addClass('active');
+
+      $.ajax({
+            type: "GET",
+            url: $(this).children('a').attr('id'), 
+            data: {
+            },
+            success: function(data) {
+              $('.templatemo-content').html(data);
+            },
+            error: function(xhr, textStatus, errorThrown) {
+              alert("Error occurred");
+            }
+      });
+
+    });
+    
+  </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+-----------------------------------------------------------------------------------------------
+
+Problem Statement and Definition – 2 pages maximum. An extended version of the
+problem statement that was dealt out during the project assignments. 
+
+-----------------------------------------------------------------------------------------------
+
+Problem statement:
+
+The owner of a fitness center uses paper-based transactions to manage records for customers,
+fitness equipment management and information, and trainer management. Using paper-based
+transactions has become an issue as information would be more difficult to search for
+as his business grows larger. To make the process of storing, accessing and searching this
+data more efficient, an information management system that is a computer solution must be created.
+
+The requirements of the requested software solution is grouped below into 3 main categories:
+
+Equipment
+1) Time a particular equipment was in use
+2) How much customers use a particular equipment (demand)
+3) Equipment information
+	- Repair/Service history
+	- Contact for suppliers of machine
+
+Customers
+1) Personal Information
+	- Name, Age, Gender, Disabilities, Contact Information
+2) Time spent at fitness center
+3) Equipment Requirement
+	- cardio equipments
+	- muscle-building equipments
+4) Their Trainers
+
+Trainers
+1) Personal Information
+	- Name Age, Gender, Disabilities, Contact Information
+2) Schedule - Time on duty
+3) Specialization
+4) Previous Experience
+
+The information above must be stored in a database. It must be efficiently queryable (quick) and 
+presented in an organized, intelligible fashion.

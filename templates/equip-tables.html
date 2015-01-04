@@ -1,0 +1,46 @@
+<div class="table-responsive">
+  <h4 class="margin-bottom-15">New Users Table</h4>
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>Equipment Name</th>
+        <th>Equipment Price</th>
+        <th>Contact Email</th>
+        <th>Contact Phone</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for equipment in EquipmentSet %}
+      <tr>
+        <td>{{equipment.ItemName}}</td>
+        <td>{{equipment.BoughtPrice}}</td>        
+        <td>{{equipment.ContactEmail}}</td>
+        <td>{{equipment.ContactPhone}}</td>
+        <td><button name="DeleteRow" href="#" class="btn btn-link" value="{{equipment.id}}">Delete</button></td>
+      </tr>
+      {% endfor %}                 
+    </tbody>
+  </table>
+</div>
+
+<script type="text/javascript">
+
+$('[name="DeleteRow"]').click(function(){
+  $.ajax({
+    type: "POST",
+    url: "/deleteEquip",
+    data: {
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+        id: $(this).val(),
+    },
+    success: function(data) {
+        alert(data);
+    },
+    error: function(xhr, textStatus, errorThrown) {
+        alert("Error Occurred");
+    }
+  });
+});
+
+</script>

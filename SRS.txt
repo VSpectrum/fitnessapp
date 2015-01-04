@@ -1,0 +1,21 @@
+1) Customers, Trainers and Equipment details management
+2) Search GUI for finding/filtering Customer, Trainer and Equipment details
+3) Customer logging of entered/left and equipment used
+4) Graphs representing the usage of Equipment (in time and number of customers who used it)
+5) Graphs representing Customers and Time they've used fitness center between 2 selected dates
+
+6) GUI for Trainer management (time trainer logged in, days off)
+7) Equipment cost calculations (spent on maintenance)
+8) Equipment degradation monitoring (averaging how long equipment takes to break/need maintaining)
+9) Cost of employing Trainers management
+10) Customer subscription/payments management
+11) Equipment purchased and costs of equipments purchased history
+12) Equipment recommendation based off Customer Requirements
+13) Graphs representing time customers spent on a particular equipment
+14) Trainer employment management (Trainers that were fired/quit, reasons)
+15) Trainer to Customers grouping - Graphical representation as to what Trainers train what Customers
+16) Customer complaint/recommendation record management
+17) Equipment Quantity Management (how much of a particular kind of equipment does he already have, how much of them are broken etc.)
+18) Equipment currently available in fitness center (requires tracking of how much equipments there are and who is using them)
+19) Items on sale management in fitness center (beverages, equipment)
+20) Graphs of profits/loss being made (requires monitoring of Trainer costs, Equipment maintenance, Building fees, Customers' subscription/income)

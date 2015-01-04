@@ -1,0 +1,50 @@
+<div class="table-responsive">
+  <h4 class="margin-bottom-15">New Users Table</h4>
+  <table class="table table-striped table-hover table-bordered">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Age</th>
+        <th>Gender</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for user in UserSet %}
+      <tr>
+        <td>{{user.UserFirstName}}</td>
+        <td>{{user.UserLastName}}</td>
+        <td>{{user.UserBday}}</td>
+        <td>{{user.get_UserGender_display}}</td>                    
+        <td>{{user.UserEmail}}</td>
+        <td>{{user.UserPhoneNumber}}</td>
+        <td><button name="DeleteRow" href="#" class="btn btn-link" value="{{user.id}}">Delete</button></td>
+      </tr>
+      {% endfor %}                 
+    </tbody>
+  </table>
+</div>
+
+<script type="text/javascript">
+
+$('[name="DeleteRow"]').click(function(){
+  $.ajax({
+    type: "POST",
+    url: "/deleteUser",
+    data: {
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+        id: $(this).val(),
+    },
+    success: function(data) {
+        alert(data);
+    },
+    error: function(xhr, textStatus, errorThrown) {
+        alert("Error Occurred");
+    }
+  });
+});
+
+</script>

@@ -1,0 +1,42 @@
+<div id="UserForm">
+  <table class="table table-striped table-hover table-bordered" style="width:40%">
+    <tbody>
+        <td align="right">Equipment Name|ID:</td> <td><input type="text" id="EquipName" placeholder="Elliptical"></input></td>
+      </tr>
+      <tr>
+        <td align="right">Price:</td> <td><input type="number" id="EquipPrice" placeholder="500.00"></input></td>
+      </tr>
+      <tr>
+      <td align="right">Email:</td> <td><input type="email" id="Email" placeholder="john.doe@gmail.com"></input></td>
+      </tr>
+      <tr>
+      <td align="right">Phone Number:</td> <td><input type="text" id="PhoneNumber" placeholder="18686844410"></input></td>
+      </tr>
+    </tbody>
+  </table>
+  <input type="button" id="SearchEquipBtn" value="Search Equipment Data"></input>
+</div>
+
+<script type="text/javascript">
+
+$('#SearchEquipBtn').click(function(){
+  $.ajax({
+    type: "POST",
+    url: "/searchEquip",
+    data: {
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+        EquipName: $("#EquipName").val(),
+        EquipPrice: $("#EquipPrice").val(),
+        EquipEmail: $("#Email").val(),
+        EquipPhone: $("#PhoneNumber").val(),
+    },
+    success: function(data) {
+        $("#UserForm").html(data);
+    },
+    error: function(xhr, textStatus, errorThrown) {
+        alert("Error Occurred");
+    }
+  });
+});
+
+</script>

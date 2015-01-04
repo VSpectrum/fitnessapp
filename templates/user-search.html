@@ -1,0 +1,61 @@
+<div id="UserForm">
+  <table class="table table-striped table-hover table-bordered" style="width:40%">
+    <tbody>
+      <tr>
+        <td align="right">Is a Trainer:</td> <td><input type="radio" name="isTrainer" value="True"> Yes
+        <input type="radio" name="isTrainer" value="False"> No </td>
+      </tr>
+      <tr>
+        <td align="right">First Name:</td> <td><input type="text" id="FirstName" placeholder="John"></input></td>
+      </tr>
+      <tr>
+        <td align="right">Last Name:</td> <td><input type="text" id="LastName" placeholder="Doe"></input></td>
+      </tr>
+      <tr>
+        <td align="right">Date of Birth:</td> <td><input type="text" id="BirthDate" placeholder="mm/dd/yyyy"></input></td>
+      </tr>
+      <tr>
+        <td align="right">Gender:</td> <td><input type="radio" name="Gender" value="M"> Male
+        <input type="radio" name="gender" value="F"> Female </td>
+      </tr>
+      <tr>
+      <td align="right">Email:</td> <td><input type="text" id="Email" placeholder="john.doe@gmail.com"></input></td>
+      </tr>
+      <tr>
+      <td align="right">Phone Number:</td> <td><input type="text" id="PhoneNumber" placeholder="18686844410"></input></td>
+      </tr>
+      <tr>
+      <td align="right">Disabilities:</td> <td><input type="text" id="Disabilities" placeholder="Arthritis, Diabetes" style="width:100%"></input></td>
+      </tr>
+    </tbody>
+  </table>
+  <input type="button" id="SearchUserBtn" value="Search User"></input>
+</div>
+
+<script type="text/javascript">
+
+$('#SearchUserBtn').click(function(){
+  $.ajax({
+    type: "POST",
+    url: "/searchUser",
+    data: {
+        csrfmiddlewaretoken: '{{ csrf_token }}',
+        IsTrainer: $("input[name='isTrainer']:checked").val(),
+        FirstName: $("#FirstName").val(),
+        LastName: $("#LastName").val(),
+        BirthDate: $("#BirthDate").val(),
+        Gender: $("input[name='Gender']:checked").val(),
+        Email: $("#Email").val(),
+        PhoneNumber: $("#PhoneNumber").val(),
+        Disabilities: $("#Disabilities").val(),
+    },
+    success: function(data) {
+        $("#UserForm").html(data);
+    },
+    error: function(xhr, textStatus, errorThrown) {
+        alert("Error Occurred");
+    }
+  });
+});
+
+</script>
